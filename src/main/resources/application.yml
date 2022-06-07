@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_microservices
+    username: root
+    password: sa
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    
+logging:
+  level:
+    org:
+      hibernate:
+        type: debug        
