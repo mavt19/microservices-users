@@ -1,5 +1,6 @@
 package com.bns.microservices.users.services.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -44,6 +45,13 @@ public class StudentServiceImpl implements StudentService {
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
 		studentRepository.deleteById(id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Student> findByNameOrLastname(String term) {
+		// TODO Auto-generated method stub
+		return studentRepository.findByNameOrLastname(term);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.bns.microservices.users.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,6 @@ import com.bns.microservices.users.services.StudentService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/students")
 @AllArgsConstructor
 public class StudentController {
 
@@ -65,5 +65,15 @@ public class StudentController {
 		}
 		studentService.deleteById(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping("/get-by-name-or-lastname/{term}")
+	public ResponseEntity<?> getByNameOrLastName(@PathVariable("term") String term) {
+		
+		List<Student> students = studentService.findByNameOrLastname(term);
+		if (students == null || students.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok().body(students);
 	}
 }
