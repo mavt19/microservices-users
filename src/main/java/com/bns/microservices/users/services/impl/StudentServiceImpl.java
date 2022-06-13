@@ -3,7 +3,8 @@ package com.bns.microservices.users.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,6 +53,12 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> findByNameOrLastname(String term) {
 		// TODO Auto-generated method stub
 		return studentRepository.findByNameOrLastname(term);
+	}
+
+	@Override
+	public Page<Student> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return studentRepository.findAll(pageable);
 	}
 
 }
