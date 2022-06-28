@@ -12,12 +12,12 @@ spring:
     name: microservices-users
       
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_microservices
-    username: root
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/db_microservices_users
+    username: postgres
     password: sa
   jpa:
-    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
